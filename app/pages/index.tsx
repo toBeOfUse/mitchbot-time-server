@@ -1,9 +1,9 @@
-import { Suspense } from "react"
-import { Image, Link, BlitzPage, useMutation, Routes } from "blitz"
-import Layout from "app/core/layouts/Layout"
-import { useCurrentUser } from "app/core/hooks/useCurrentUser"
-import logout from "app/auth/mutations/logout"
-import logo from "public/logo.png"
+import { Suspense } from "react";
+import { Image, Link, BlitzPage, useMutation, Routes } from "blitz";
+import Layout from "app/core/layouts/Layout";
+import { useCurrentUser } from "app/core/hooks/useCurrentUser";
+import logout from "app/auth/mutations/logout";
+import logo from "public/logo.png";
 
 /*
  * This file is just for a pleasant getting started page for your new app.
@@ -11,44 +11,29 @@ import logo from "public/logo.png"
  */
 
 const UserInfo = () => {
-  const currentUser = useCurrentUser()
-  const [logoutMutation] = useMutation(logout)
+  const currentUser = useCurrentUser();
+  const [logoutMutation] = useMutation(logout);
 
   if (currentUser) {
     return (
       <>
-        <button
-          className="button small"
-          onClick={async () => {
-            await logoutMutation()
-          }}
-        >
-          Logout
+        <h1>You are logged in !</h1>
+        <pre>Your data: {JSON.stringify(currentUser)}</pre>
+        <button className="buttonSmall" onClick={async () => await logoutMutation()}>
+          Log out
         </button>
-        <div>
-          User id: <code>{currentUser.id}</code>
-          <br />
-          User role: <code>{currentUser.role}</code>
-        </div>
       </>
-    )
+    );
   } else {
     return (
       <>
-        <Link href={Routes.SignupPage()}>
-          <a className="button small">
-            <strong>Sign Up</strong>
-          </a>
-        </Link>
-        <Link href={Routes.LoginPage()}>
-          <a className="button small">
-            <strong>Login</strong>
-          </a>
-        </Link>
+        <a className="button small" href="/api/auth/discord">
+          <strong>Login via Discord</strong>
+        </a>
       </>
-    )
+    );
   }
-}
+};
 
 const Home: BlitzPage = () => {
   return (
@@ -263,10 +248,10 @@ const Home: BlitzPage = () => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-Home.suppressFirstRenderFlicker = true
-Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
+Home.suppressFirstRenderFlicker = true;
+Home.getLayout = (page) => <Layout title="Home">{page}</Layout>;
 
-export default Home
+export default Home;
