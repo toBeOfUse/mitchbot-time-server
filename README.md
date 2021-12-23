@@ -1,6 +1,6 @@
 [![Blitz.js](https://raw.githubusercontent.com/blitz-js/art/master/github-cover-photo.png)](https://blitzjs.com)
 
-This is a [Blitz.js](https://github.com/blitz-js/blitz) app.
+This is a [Blitz.js](https://github.com/blitz-js/blitz) app. I have no idea what I'm doing
 
 # **time-server**
 
@@ -16,17 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Environment Variables
 
-Ensure the `.env.local` file has required environment variables:
-
-```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/time-server
-```
-
-Ensure the `.env.test.local` file has required environment variables:
-
-```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/time-server_test
-```
+Database URLs and such live in .env.local and .env.test.local.
 
 ## Tests
 
@@ -59,75 +49,7 @@ Blitz comes with a powerful CLI that is designed to make development easy and fa
 
 You can read more about it on the [CLI Overview](https://blitzjs.com/docs/cli-overview) documentation.
 
-## What's included?
-
-Here is the starting structure of your app.
-
-```
-time-server
-├── app/
-│   ├── api/
-│   ├── auth/
-│   │   ├── components/
-│   │   │   ├── LoginForm.tsx
-│   │   │   └── SignupForm.tsx
-│   │   ├── mutations/
-│   │   │   ├── changePassword.ts
-│   │   │   ├── forgotPassword.test.ts
-│   │   │   ├── forgotPassword.ts
-│   │   │   ├── login.ts
-│   │   │   ├── logout.ts
-│   │   │   ├── resetPassword.test.ts
-│   │   │   ├── resetPassword.ts
-│   │   │   └── signup.ts
-│   │   ├── pages/
-│   │   │   ├── forgot-password.tsx
-│   │   │   ├── login.tsx
-│   │   │   ├── reset-password.tsx
-│   │   │   └── signup.tsx
-│   │   └── validations.ts
-│   ├── core/
-│   │   ├── components/
-│   │   │   ├── Form.tsx
-│   │   │   └── LabeledTextField.tsx
-│   │   ├── hooks/
-│   │   │   └── useCurrentUser.ts
-│   │   └── layouts/
-│   │       └── Layout.tsx
-│   ├── pages/
-│   │   ├── _app.tsx
-│   │   ├── _document.tsx
-│   │   ├── 404.tsx
-│   │   ├── index.test.tsx
-│   │   └── index.tsx
-│   └── users/
-│       └── queries/
-│           └── getCurrentUser.ts
-├── db/
-│   ├── migrations/
-│   ├── index.ts
-│   ├── schema.prisma
-│   └── seeds.ts
-├── integrations/
-├── mailers/
-│   └── forgotPasswordMailer.ts
-├── public/
-│   ├── favicon.ico
-│   └── logo.png
-├── test/
-│   ├── setup.ts
-│   └── utils.tsx
-├── .eslintrc.js
-├── babel.config.js
-├── blitz.config.ts
-├── jest.config.ts
-├── package.json
-├── README.md
-├── tsconfig.json
-└── types.ts
-```
-
-These files are:
+## Included folders
 
 - The `app/` folder is a container for most of your project. This is where you’ll put any pages or API routes.
 
