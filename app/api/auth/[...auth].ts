@@ -5,15 +5,16 @@ import secrets from "./discordAppInfo";
 import db from "db";
 
 export default passportAuth({
-  successRedirectUrl: "/",
-  errorRedirectUrl: "/",
+  successRedirectUrl: "/calendar",
+  errorRedirectUrl: "/calendar",
+  secureProxy: true,
   strategies: [
     {
       strategy: new DiscordStrategy(
         {
           ...secrets,
-          callbackURL: "/api/auth/discord/callback",
-          scope: ["identity", "email"],
+          callbackURL: "https://mitchbot.cloud/calendar/api/auth/discord/callback",
+          scope: ["identify", "email"],
         },
         async function (_accessToken, _refreshToken, profile, done) {
           if (!profile.email) {
@@ -29,7 +30,7 @@ export default passportAuth({
             update: { email: profile.email },
           });
           const publicData = {
-            userID: user.id,
+            userId: user.id,
             roles: [user.role],
             source: "discord",
           };

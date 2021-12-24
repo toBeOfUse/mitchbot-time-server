@@ -5,10 +5,10 @@ import { useCurrentUser } from "app/core/hooks/useCurrentUser";
 import logout from "app/auth/mutations/logout";
 import logo from "public/logo.png";
 
-/*
- * This file is just for a pleasant getting started page for your new app.
- * You can delete everything in here and start from scratch if you like.
- */
+// this is terrible but importing images does not seem to respect basePath in
+// blitz.config.ts on its own
+logo.src = "/calendar" + logo.src;
+logo.blurDataURL = "/calendar" + logo.blurDataURL;
 
 const UserInfo = () => {
   const currentUser = useCurrentUser();
@@ -27,7 +27,7 @@ const UserInfo = () => {
   } else {
     return (
       <>
-        <a className="button small" href="/api/auth/discord">
+        <a className="button small" href="/calendar/api/auth/discord">
           <strong>Login via Discord</strong>
         </a>
       </>
