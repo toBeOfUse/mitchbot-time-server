@@ -1,4 +1,3 @@
-// app/api/auth/[...auth].ts
 import { passportAuth } from "blitz";
 import { Strategy as DiscordStrategy } from "passport-discord";
 import secrets from "./discordAppInfo";
@@ -20,14 +19,17 @@ export default passportAuth({
           if (!profile.email) {
             return done(new Error("discord login didn't work to identify user"));
           }
+          const avatarURL = profile.avatar
+            ? `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`
+            : `https://cdn.discordapp.com/embed/avatars/${parseInt(profile.discriminator) % 5}.png`;
           const user = await db.user.upsert({
             where: { email: profile.email },
             create: {
               email: profile.email,
               username: profile.username,
-              avatarURL: profile.avatar ?? "",
+              avatarURL,
             },
-            update: { email: profile.email },
+            update: { email: profile.email, avatarURL },
           });
           const publicData = {
             userId: user.id,

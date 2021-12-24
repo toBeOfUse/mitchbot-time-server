@@ -18,7 +18,9 @@ const UserInfo = () => {
     return (
       <>
         <h1>You are logged in !</h1>
-        <pre>Your data: {JSON.stringify(currentUser)}</pre>
+        <p>Username: {currentUser.username}</p>
+        <p>Avatar:</p>
+        <img src={currentUser.avatarURL} alt={"avatar for" + currentUser.username} />
         <button className="buttonSmall" onClick={async () => await logoutMutation()}>
           Log out
         </button>
